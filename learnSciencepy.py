@@ -10,4 +10,5 @@ populations=[33871648,37253956,
 pop=pd.Series(populations,index=index)
 index=pd.MultiIndex.from_tuples(index)
 pop=pop.reindex(index)
-print(pop)
+pop_df=pop.unstack()
+print(pop_df)
