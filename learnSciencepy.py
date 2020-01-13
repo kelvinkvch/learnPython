@@ -11,4 +11,4 @@ index=pd.MultiIndex.from_tuples(index)
 pop=pd.Series(populations,index=index)
 pop=pop.reindex(index)
 
-print(pop)
+print(pop[:,2010])
