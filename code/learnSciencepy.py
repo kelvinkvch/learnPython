@@ -12,4 +12,4 @@ pop=pd.Series(populations,index=index)
 pop.index.names=['state','year']
 pop=pop.reset_index(name='population')
 pop.to_csv('proutfile\out.csv',index=False)
-print('just test')
+
