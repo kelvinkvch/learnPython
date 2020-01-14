@@ -10,6 +10,6 @@ populations=[33871648,37253956,
 index=pd.MultiIndex.from_tuples(index)
 pop=pd.Series(populations,index=index)
 pop.index.names=['state','year']
-# pop=pd.DataFrame(pop)
 pop=pop.reset_index(name='population')
 pop.to_csv('proutfile\out.csv',index=False)
+print('just test')
