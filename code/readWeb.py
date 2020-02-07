@@ -1,28 +1,29 @@
-import re
-import urllib.request
+import  re
 from urllib.error import HTTPError,URLError,ContentTooShortError
+import urllib.request
 
-def getweb(url,user_agent='wswp',num_retries=2,charset='utf-8'):
+def getweb(url,user_agent='wswp',num_retries=2,charset='utf8'):
     print('Downloading:',url)
     req=urllib.request.Request(url)
-    req.add_header('User-agent',user_agent)
+    req.add_header('user-agent',user_agent)
     try:
-        resp=urllib.request.urlopen(req)
-        cs=resp.headers.get_content_charset()
+        response=urllib.request.urlopen(req)
+        cs=response.headers.get_content_charset()
         if not cs:
             cs=charset
-        html=resp.read().decode(cs)
+        html=response.read().decode(cs)
     except (HTTPError,URLError,ContentTooShortError) as e:
-        print('Download error:',e.reason)
+        print('Download erro:',e.reason)
         html=None
         if num_retries>0:
             if hasattr(e,'code') and 500<=e.code<600:
                 getweb(url,num_retries-1)
     return html
 def getsitemap(url):
+    reg=re.compile(r'<loc>(.*?)</loc>')
     sitemap=getweb(url)
-    links=re.findall(r'<loc>(.*?)</loc>',sitemap)
-    for link in links:
-        html=getweb(link)
+    links=reg.findall(sitemap)
+    for lin in links:
+        getweb(lin)
 
 getsitemap('http://example.python-scraping.com/sitemap.xml')
