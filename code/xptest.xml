@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<bookstor>
+    <book>
+        <title lang="eng">Harry potter</title>
+        <price>29.99</price>
+    </book>
+    <book>
+        <title lang="eng">learning xml</title>
+        <pric>39.95</pric>
+    </book>
+</bookstor>
